@@ -1,0 +1,5 @@
+com\zkai\financial\biz\bonus\impl\UserBonusBizImpl.class
+com\zkai\financial\biz\bonus\UserBonusBiz.class
+com\zkai\financial\BonusServiceApp.class
+com\zkai\financial\dao\bonus\UserBonusMapper.class
+com\zkai\financial\api\bonus\BonusServiceApiImpl.class

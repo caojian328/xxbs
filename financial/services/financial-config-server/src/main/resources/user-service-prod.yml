@@ -1,0 +1,2 @@
+from: local-prod
+logging.level.com.zkai: info

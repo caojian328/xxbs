@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <mkdir dir="F:\生产发布包\发布包/2.1.4-1.0-RELEASE"/>
+  <copy todir="F:\生产发布包\发布包/2.1.4-1.0-RELEASE" overwrite="true">
+    <fileset dir="F:\workspaces\financial\services\financial-web-pc\target" erroronmissingdir="false">
+      <include name="*.jar"/>
+    </fileset>
+  </copy>
+</target>
+</project>

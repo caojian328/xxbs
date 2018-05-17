@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/commons" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/commons/financial-apis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/commons/financial-base" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/commons/financial-db" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/commons/financial-execption" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/commons/financial-logs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/commons/financial-model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/financial-api-gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/financial-bonus-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/financial-config-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/financial-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/financial-user-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/financial-web-pc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/financial-zipkin" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

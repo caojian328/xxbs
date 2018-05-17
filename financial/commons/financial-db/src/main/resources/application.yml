@@ -1,0 +1,49 @@
+
+#主数据源
+spring.datasource.master: 
+                  url: jdbc:mysql://192.168.11.51:3306/EB_TEST_1
+                  username: root
+                  password: devhudie#123
+                  driver: com.mysql.jdbc.Driver
+                  filters: stat
+                  initialSize: 2
+                  minIdle: 1
+                  maxActive: 20
+                  maxWait: 60000
+                  timeBetweenEvictionRunsMillis: 60000
+                  minEvictableIdleTimeMillis: 300000
+                  validationQuery: SELECT 1
+                  testWhileIdle: true
+                  testOnBorrow: false
+                  testOnReturn: false
+                  poolPreparedStatements: true 
+                  maxPoolPreparedStatementPerConnectionSize: 200
+
+
+#从数据源
+spring.datasource.slave: 
+                  url: jdbc:mysql://192.168.11.51:3306/EB_TEST_2
+                  username: root
+                  password: devhudie#123
+                  driver: com.mysql.jdbc.Driver
+                  filters: stat
+                  initialSize: 2
+                  minIdle: 1
+                  maxActive: 20
+                  maxWait: 60000
+                  timeBetweenEvictionRunsMillis: 60000
+                  minEvictableIdleTimeMillis: 300000
+                  validationQuery: SELECT 1
+                  testWhileIdle: true
+                  testOnBorrow: false
+                  testOnReturn: false
+                  poolPreparedStatements: true 
+                  maxPoolPreparedStatementPerConnectionSize: 200
+                  
+
+
+mybatis.config-location: classpath:mybatis-config.xml
+mybatis.mapper-locations: classpath*:com/zkai/financial/dao/**/*Mapper.xml
+mybatis.type-aliases-package: com.zkai.financial.dto
+
+

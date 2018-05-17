@@ -1,0 +1,97 @@
+spring.application.name: bonus-service
+server.port: ${port}
+feign.httpclient.enabled: true
+
+
+
+#主数据源
+spring.datasource.master: 
+                  url: jdbc:mysql://localhost:3306/eb_test_1
+                  username: root
+                  password: caojian
+                  driver: com.mysql.jdbc.Driver
+                  filters: stat
+                  initialSize: 2
+                  minIdle: 1
+                  maxActive: 20
+                  maxWait: 60000
+                  timeBetweenEvictionRunsMillis: 60000
+                  minEvictableIdleTimeMillis: 300000
+                  validationQuery: SELECT 1
+                  testWhileIdle: true
+                  testOnBorrow: false
+                  testOnReturn: false
+                  poolPreparedStatements: true 
+                  maxPoolPreparedStatementPerConnectionSize: 200
+
+
+#从数据源
+spring.datasource.slave: 
+                  url: jdbc:mysql://localhost:3306/eb_test_2
+                  username: root
+                  password: caojian
+                  driver: com.mysql.jdbc.Driver
+                  filters: stat
+                  initialSize: 2
+                  minIdle: 1
+                  maxActive: 20
+                  maxWait: 60000
+                  timeBetweenEvictionRunsMillis: 60000
+                  minEvictableIdleTimeMillis: 300000
+                  validationQuery: SELECT 1
+                  testWhileIdle: true
+                  testOnBorrow: false
+                  testOnReturn: false
+                  poolPreparedStatements: true 
+                  maxPoolPreparedStatementPerConnectionSize: 200
+                  
+
+
+mybatis.config-location: classpath:mybatis-config.xml
+mybatis.mapper-locations: classpath*:com/zkai/financial/dao/**/*Mapper.xml
+mybatis.type-aliases-package: com.zkai.financial.dto
+
+
+
+
+
+
+
+eureka.client.serviceUrl.defaultZone: http://peer1:1111/eureka/
+eureka.client.healthcheck.enabled: true
+eureka.instance: 
+    lease-expiration-duration-in-seconds: 30 
+    lease-renewal-interval-in-seconds: 10
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port} 
+  
+    
+spring.cloud.config.profile: dev
+spring.cloud.config.uri: http://localhost:8889/
+spring.cloud.config.discovery.enabled: true
+spring.cloud.config.discovery.serviceId: config-server
+spring.cloud.config.failFast: false
+
+
+# 开启本地配置
+#spring.profiles.active: native
+
+spring.rabbitmq:
+          host: 192.168.199.82
+          port: 5672
+          username: caojian
+          password: caojian328
+
+ 
+#from: loacl
+
+#启用 shutdown endpoint的HTTP访问 
+endpoints:
+  shutdown:
+    enabled: true
+#不需要用户名密码验证
+    sensitive: false
+
+
+spring.zipkin.base-url: http://127.0.0.1:2655
+            

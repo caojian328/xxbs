@@ -1,0 +1,11 @@
+com\zkai\financial\web\model\SysRole.class
+com\zkai\financial\web\pc\IndexController.class
+com\zkai\financial\shiro\service\impl\UserInfoServiceImpl.class
+com\zkai\financial\web\model\UserInfo.class
+com\zkai\financial\shiro\ShiroConfiguration.class
+com\zkai\financial\shiro\service\UserInfoService.class
+com\zkai\financial\WebPCApplication.class
+com\zkai\financial\web\pc\UserController.class
+com\zkai\financial\web\model\SysPermission.class
+com\zkai\financial\shiro\MyShiroRealm.class
+com\zkai\financial\shiro\dao\UserInfoRepository.class

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/financial-api-gateway/financial-api-gateway.iml" filepath="$PROJECT_DIR$/services/financial-api-gateway/financial-api-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/financial-apis/financial-apis.iml" filepath="$PROJECT_DIR$/commons/financial-apis/financial-apis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/financial-base/financial-base.iml" filepath="$PROJECT_DIR$/commons/financial-base/financial-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/financial-bonus-service/financial-bonus-service.iml" filepath="$PROJECT_DIR$/services/financial-bonus-service/financial-bonus-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/financial-config-server/financial-config-server.iml" filepath="$PROJECT_DIR$/services/financial-config-server/financial-config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/financial-db/financial-db.iml" filepath="$PROJECT_DIR$/commons/financial-db/financial-db.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/financial-execption/financial-execption.iml" filepath="$PROJECT_DIR$/commons/financial-execption/financial-execption.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/financial-logs/financial-logs.iml" filepath="$PROJECT_DIR$/commons/financial-logs/financial-logs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/financial-model/financial-model.iml" filepath="$PROJECT_DIR$/commons/financial-model/financial-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/financial-parent.iml" filepath="$PROJECT_DIR$/financial-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/financial-server/financial-server.iml" filepath="$PROJECT_DIR$/services/financial-server/financial-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/financial-user-service/financial-user-service.iml" filepath="$PROJECT_DIR$/services/financial-user-service/financial-user-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/financial-web-pc/financial-web-pc.iml" filepath="$PROJECT_DIR$/services/financial-web-pc/financial-web-pc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/financial-zipkin/financial-zipkin.iml" filepath="$PROJECT_DIR$/services/financial-zipkin/financial-zipkin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/services.iml" filepath="$PROJECT_DIR$/services/services.iml" />
+    </modules>
+  </component>
+</project>

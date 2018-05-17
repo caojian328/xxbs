@@ -1,0 +1,104 @@
+spring.application.name: api-gateway
+server.port: 5555
+
+security.basic.enabled: false
+
+eureka.client.serviceUrl.defaultZone: http://peer1:1111/eureka/
+eureka.client.healthcheck.enabled: true
+eureka.instance: 
+    lease-expiration-duration-in-seconds: 30 
+    lease-renewal-interval-in-seconds: 10
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port} 
+    
+#开启重试机制
+spring.cloud.loadbalancer.retry.enabled: true
+
+#断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试。
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 8000
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 6000
+    
+# routes to serviceId
+#zuul.ignored-services: "*"
+ 
+zuul.routes.user:
+                  path: /u/**
+                  serviceId: user-service
+#                 stripPrefix: false
+
+#请求连接的超时时间                 
+user-service.ribbon.ConnectTimeout: 250
+#请求处理的超时时间
+user-service.ribbon.ReadTimeout: 6000
+#对所有操作请求都进行重试
+user-service.ribbon.OkToRetryOnAllOperations: true
+#切换实例的重试次数
+user-service.ribbon.MaxAutoRetriesNextServer: 2
+#对当前实例的重试次数
+user-service.ribbon.MaxAutoRetries: 1
+
+
+zuul.routes.bonus:
+                  path: /b/**
+                  serviceId: bonus-service
+                  #stripPrefix: false  设置 zuul.prefix 可以为所有的匹配增加前缀, 例如 /api . 代理前缀默认会从请求路径中移除(通过 zuul.stripPrefix: false 可以关闭这个功能). 你也可以在指定服务中关闭这个功能
+
+
+# routes to url
+zuul.routes.api-a-url:
+                    path: /api-a-url/**
+                    url: http://localhost:2222/
+
+
+spring.rabbitmq: 
+          host: 192.168.199.82
+          port: 5672
+          username: caojian
+          password: caojian328
+          
+
+spring.cloud.config.profile: test
+spring.cloud.config.uri: http://localhost:8889/
+spring.cloud.config.discovery.enabled: true
+spring.cloud.config.discovery.serviceId: config-server
+spring.cloud.config.failFast: false
+
+#ribbon:
+#  eureka:
+#    enabled: false
+
+#zuul.host.maxTotalConnections: 300   
+#zuul.host.maxPerRouteConnections: 30
+#server.session.timeout: 1500
+#zuul.client.ReadTimeout: 3000
+#zuul.client.ConnectTimeout: 2000
+zuul.client.ServerListRefreshInterval: 1000
+
+
+security:
+  oauth2:
+    client:
+      clientId: 233668646673605
+      clientSecret: 33b17e044ee6a4fa383f46ec6e28ea1d
+      accessTokenUri: https://graph.facebook.com/oauth/access_token
+      userAuthorizationUri: https://www.facebook.com/dialog/oauth
+      tokenName: oauth_token
+      authenticationScheme: query
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://graph.facebook.com/me
+
+
+spring.zipkin.base-url: http://127.0.0.1:2655
