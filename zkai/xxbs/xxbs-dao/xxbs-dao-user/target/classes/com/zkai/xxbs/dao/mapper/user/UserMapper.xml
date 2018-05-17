@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkai.xxbs.dao.mapper.user.UserMapper">
+
+    <resultMap id="userMap" type="com.zkai.xxbs.datamodel.entity.user.UserEntity">
+        <result column="id" property="id" jdbcType="CHAR"/>
+        <result column="nick_name" property="nickName" jdbcType="VARCHAR"/>
+        <result column="real_name" property="realName" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="INTEGER"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+        <result column="id_card" property="idCard" jdbcType="VARCHAR"/>
+        <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="account" property="account" jdbcType="VARCHAR"/>
+        <result column="pwd" property="password" jdbcType="VARCHAR"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
+        <result column="register_time" property="createTime" jdbcType="TIMESTAMP"/>
+		<result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP"/>
+
+    </resultMap>
+
+
+    <!-- 按帐号和密码登录 -->
+    <select id="queryByAccountAndPwd" resultMap="userMap">
+		SELECT * FROM XXBS_USER WHERE account=#{account} and pwd=#{pwd}
+	</select>
+
+    <!--创建用户-->
+    <insert id="create" parameterType="com.zkai.xxbs.datamodel.entity.user.UserEntity">
+			INSERT INTO XXBS_USER (
+				id,
+				nick_name,
+				real_name,
+				sex,
+				age,
+				id_card,
+				mobile,
+				address,
+				phone,
+				account,
+				pwd,
+				state,
+				register_time,
+				last_update_time
+			)
+			VALUES
+				(
+					#{id},
+					#{account},
+					#{realName},
+					#{sex},
+					#{age},
+					#{idCard},
+					#{mobile},
+					#{address},
+					#{phone},
+					#{account},
+					#{password},
+					1,
+					now(),
+					now()
+				)
+	</insert>
+
+	<!--修改用户信息-->
+	<update id="update" parameterType="com.zkai.xxbs.datamodel.entity.user.UserEntity">
+
+		UPDATE
+			XXBS_USER
+		SET
+			nick_name = #{nickName},
+			real_name = #{realName},
+			sex = #{sex},
+			age = #{age},
+			id_card = #{idCard},
+			mobile = #{mobile},
+			address = #{address},
+			phone = #{phone},
+			account = #{account},
+			pwd = #{password},
+			state = #{state},
+			last_update_time = now()
+		WHERE
+			id = #{id}
+	</update>
+
+
+	<!--分页查询-->
+	<select id="queryPaging" parameterType="com.zkai.xxbs.datamodel.PagerModel"
+	resultMap="userMap">
+
+			SELECT * FROM XXBS_USER
+
+	</select>
+
+	<!--按ID查询-->
+	<select id="queryById" resultMap="userMap" parameterType="string">
+			SELECT * FROM XXBS_USER WHERE id=#{id}
+	</select>
+</mapper>

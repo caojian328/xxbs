@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkai.xxbs.dao.mapper.topic.TopicAnswerMapper">
+
+    <resultMap id="topicAnswerMap" type="com.zkai.xxbs.datamodel.entity.topic.TopicAnswerEntity">
+        <result column="id" property="id" jdbcType="CHAR"/>
+        <result column="tid" property="tid" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="attachment" property="attachment" jdbcType="VARCHAR"/>
+        <result column="isCorrect" property="isCorrect" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
+    <!--创建-->
+    <insert id="create" parameterType="com.zkai.xxbs.datamodel.entity.topic.TopicAnswerEntity">
+
+	</insert>
+
+    <!--修改信息-->
+    <update id="update" parameterType="com.zkai.xxbs.datamodel.entity.topic.TopicAnswerEntity">
+
+
+    </update>
+
+
+    <!--分页查询-->
+    <select id="queryPaging" parameterType="com.zkai.xxbs.datamodel.PagerModel"
+            resultMap="topicAnswerMap">
+
+			SELECT * FROM XXBS_TOPIC_ANSWER
+
+	</select>
+
+    <!--按ID查询-->
+    <select id="queryById" resultMap="topicAnswerMap" parameterType="string">
+		SELECT * FROM XXBS_TOPIC_ANSWER WHERE id=#{id}
+	</select>
+
+</mapper>

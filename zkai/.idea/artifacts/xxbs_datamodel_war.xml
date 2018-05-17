@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="xxbs-datamodel:war">
+    <output-path>$PROJECT_DIR$/xxbs/xxbs-datamodel/target</output-path>
+    <root id="archive" name="xxbs-datamodel-1.0.0.war">
+      <element id="artifact" artifact-name="xxbs-datamodel:war exploded" />
+    </root>
+  </artifact>
+</component>

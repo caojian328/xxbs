@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          lazy-init="false" >
+        <property name="locations">
+            <list>
+                <value>classpath*:conf/jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 写数据源 -->
+    <bean id="masterDataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <!-- 基本属性 url、user、password -->
+        <property name="url" value="${master.jdbc.url}" />
+        <property name="username" value="${master.jdbc.username}" />
+        <property name="password" value="${master.jdbc.password}" />
+
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="${master.jdbc.initialSize}" />
+        <property name="minIdle" value="${master.jdbc.minIdle}" />
+        <property name="maxActive" value="${master.jdbc.maxActive}" />
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="${master.jdbc.maxWait}" />
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${master.jdbc.timeBetweenEvictionRunsMillis}" />
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="${master.jdbc.minEvictableIdleTimeMillis}" />
+
+        <property name="validationQuery" value="${master.jdbc.validationQuery}" />
+        <property name="testWhileIdle" value="${master.jdbc.testWhileIdle}" />
+        <property name="testOnBorrow" value="${master.jdbc.testOnBorrow}" />
+        <property name="testOnReturn" value="${master.jdbc.testOnReturn}" />
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="${master.jdbc.poolPreparedStatements}" />
+        <property name="maxPoolPreparedStatementPerConnectionSize"
+                  value="${master.jdbc.maxPoolPreparedStatementPerConnectionSize}" />
+
+        <!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
+        <property name="filters" value="${master.jdbc.filters}" />
+    </bean>
+
+
+    <!-- 只读数据源 -->
+    <bean id="slavedDataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <!-- 基本属性 url、user、password -->
+        <property name="url" value="${slave.jdbc.url}" />
+        <property name="username" value="${slave.jdbc.username}" />
+        <property name="password" value="${slave.jdbc.password}" />
+
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="${slave.jdbc.initialSize}" />
+        <property name="minIdle" value="${slave.jdbc.minIdle}" />
+        <property name="maxActive" value="${slave.jdbc.maxActive}" />
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="${slave.jdbc.maxWait}" />
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${slave.jdbc.timeBetweenEvictionRunsMillis}" />
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="${slave.jdbc.minEvictableIdleTimeMillis}" />
+
+        <property name="validationQuery" value="${slave.jdbc.validationQuery}" />
+        <property name="testWhileIdle" value="${slave.jdbc.testWhileIdle}" />
+        <property name="testOnBorrow" value="${slave.jdbc.testOnBorrow}" />
+        <property name="testOnReturn" value="${slave.jdbc.testOnReturn}" />
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="${slave.jdbc.poolPreparedStatements}" />
+        <property name="maxPoolPreparedStatementPerConnectionSize"
+                  value="${slave.jdbc.maxPoolPreparedStatementPerConnectionSize}" />
+
+        <!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
+        <property name="filters" value="${slave.jdbc.filters}" />
+    </bean>
+
+    <!--数据源-->
+    <bean id="dataSource" class="com.zkai.xxbs.db.DynamicDataSource">
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <!-- write -->
+                <entry key="master" value-ref="masterDataSource"/>
+                <!-- read -->
+                <entry key="slave" value-ref="slavedDataSource"/>
+            </map>
+
+        </property>
+        <property name="defaultTargetDataSource" ref="masterDataSource"/>
+    </bean>
+
+
+    <!--选择数据源-->
+    <bean id="dataSourceAspect" class="com.zkai.xxbs.db.DataSourceAspect">
+        <!--定义哪些方法名开头的数据源用只读数据源-->
+        <property name="items">
+            <list>
+                <value>query</value>
+                <value>select</value>
+                <value>find</value>
+            </list>
+        </property>
+    </bean>
+
+    <aop:aspectj-autoproxy proxy-target-class="false" />
+    <aop:config>
+        <aop:aspect id="aspectAop" ref="dataSourceAspect">
+            <!-- 数据源的选择在service层决定 -->
+            <aop:pointcut id="tx" expression="execution(* com.zkai.xxbs.service.api.*.*(..))"/>
+            <aop:before pointcut-ref="tx" method="changeDataSource"/>
+        </aop:aspect>
+    </aop:config>
+
+
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <!-- 配置事务的传播特性 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED" />
+            <tx:method name="add*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="REQUIRED" />
+            <tx:method name="create*" propagation="REQUIRED" />
+            <tx:method name="*" read-only="true" />
+        </tx:attributes>
+    </tx:advice>
+
+</beans>

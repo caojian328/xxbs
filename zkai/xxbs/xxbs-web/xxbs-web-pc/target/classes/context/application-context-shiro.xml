@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-lazy-init="true">
+
+	<description>Shiro安全配置</description>
+
+
+    <!-- 会话Session ID生成器 -->
+    <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
+
+
+    <!-- Shiro的主业务层:整个Shiro下Subject的处理都通过它,相当于dispatch filter -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="sessionManager" ref="sessionManager"/>
+        <property name="realms">
+            <list>
+                <ref bean="accountAuthorizationRealm"/>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- 自定义会话管理配置 -->
+    <bean id="sessionManager" class="com.zkai.xxbs.shiro.ShiroSessionManager">
+
+        <property name="sessionDAO" ref="sessionDAO" />
+        <!-- 会话Cookie模板 -->
+        <property name="sessionIdCookie" ref="sessionIdCookie" />
+
+        <!-- session 监听，可以多个。 -->
+        <property name="sessionListeners">
+            <list>
+                <bean class="com.zkai.xxbs.shiro.listener.ShiroSessionListener"/>
+            </list>
+        </property>
+
+        <!-- 间隔多少时间检查，不配置是60分钟 -->
+        <property name="sessionValidationScheduler" ref="sessionValidationScheduler" />
+
+        <!-- 相隔多久检查一次session的有效性 -->
+        <property name="sessionValidationInterval" value="1800000" />
+        <!-- session 有效时间为半小时 （毫秒单位） -->
+        <property name="globalSessionTimeout" value="1800000" />
+        <!-- 是否开启 检测，默认开启 -->
+        <property name="sessionValidationSchedulerEnabled" value="true" />
+        <!-- 是否删除无效的，默认也是开启 -->
+        <property name="deleteInvalidSessions" value="true" />
+    <!--  <property name="sessionIdUrlRewritingEnabled" value="false" />-->
+ </bean>
+
+
+ <!-- 会话Cookie模板 -->
+    <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <!--<constructor-arg name="name"  value="xxbs.session.id"/>-->
+        <property name="path" value="/"/>
+        <property name="httpOnly" value="true" />
+        <property name="name"  value="Token"/>
+    </bean>
+
+
+    <!-- 会话验证调度器 -->
+    <bean id="sessionValidationScheduler"
+          class="org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler">
+        <!-- 间隔多少时间检查，不配置是60分钟 -->
+        <property name="interval" value="300000" />
+        <property name="sessionManager" ref="sessionManager" />
+    </bean>
+
+
+    <!-- 使用redis保存session-->
+    <bean id="sessionDAO" class="com.zkai.xxbs.shiro.store.JedisSessionDAO"/>
+
+    <bean id="jedisManager" class="com.zkai.xxbs.shiro.store.JedisManager"/>
+
+
+    <!---->
+    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <property name="hashAlgorithmName" value="MD5"/>
+    </bean>
+
+
+    <!-- Shiro都需要通过Realm获得安全数据(用户,角色,权限),相当于data source -->
+    <bean id="accountAuthorizationRealm" class="com.zkai.xxbs.shiro.realm.AccountAuthorizationRealm">
+        <property name="credentialsMatcher" ref="credentialsMatcher"/>
+        <property name="cacheManager" ref="jedisManager"/>
+    </bean>
+
+
+<bean id="rolesFilter" class="com.zkai.xxbs.shiro.filter.RolesFilter"/>
+<bean id="loginFilter" class="com.zkai.xxbs.shiro.filter.LoginFilter"/>
+
+
+<!-- Shiro Filter 对应web.xml的配置-->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/goLogin" />
+        <property name="unauthorizedUrl" value="/goLogin" />
+        <property name="filters">
+            <map>
+                <entry key="login" value-ref="loginFilter"/>
+                <entry key="roles" value-ref="rolesFilter"/>
+            </map>
+        </property>
+
+        <!--/index = login-->
+		<property name="filterChainDefinitions">
+			<value>
+                /user/** = login,roles[1001]
+                /logout=logout
+                /** = anon
+			</value>
+		</property>
+	</bean>
+
+
+
+    <!-- Shiro生命周期处理器-->
+	<!--保证实现了Shiro内部lifecycle函数的bean执行-->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!--使用@RequiresRoles,@RequiresPermissions等注解-->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+
+
+    <aop:config proxy-target-class="true"/>
+
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+</beans>

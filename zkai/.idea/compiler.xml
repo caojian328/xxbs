@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="component-utils" />
+        <module name="xxbs-cache" />
+        <module name="xxbs-dao-api" />
+        <module name="xxbs-dao-topic" />
+        <module name="xxbs-dao-user" />
+        <module name="xxbs-datamodel" />
+        <module name="xxbs-db" />
+        <module name="xxbs-service-api" />
+        <module name="xxbs-service-topic" />
+        <module name="xxbs-service-user" />
+        <module name="xxbs-web-pc" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.7">
+      <module name="component-utils" target="1.5" />
+      <module name="xxbs" target="1.7" />
+      <module name="xxbs-cache" target="1.7" />
+      <module name="xxbs-dao" target="1.7" />
+      <module name="xxbs-dao-api" target="1.7" />
+      <module name="xxbs-dao-topic" target="1.7" />
+      <module name="xxbs-dao-user" target="1.7" />
+      <module name="xxbs-datamodel" target="1.7" />
+      <module name="xxbs-db" target="1.7" />
+      <module name="xxbs-service" target="1.7" />
+      <module name="xxbs-service-api" target="1.7" />
+      <module name="xxbs-service-topic" target="1.7" />
+      <module name="xxbs-service-user" target="1.7" />
+      <module name="xxbs-web" target="1.7" />
+      <module name="xxbs-web-pc" target="1.6" />
+      <module name="zkai" target="1.5" />
+      <module name="zkai-component" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

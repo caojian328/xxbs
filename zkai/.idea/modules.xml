@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/component/component-utils/component-utils.iml" filepath="$PROJECT_DIR$/component/component-utils/component-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs.iml" filepath="$PROJECT_DIR$/xxbs/xxbs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-cache/xxbs-cache.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-cache/xxbs-cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-dao/xxbs-dao.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-dao/xxbs-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-dao/xxbs-dao-api/xxbs-dao-api.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-dao/xxbs-dao-api/xxbs-dao-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-dao/xxbs-dao-topic/xxbs-dao-topic.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-dao/xxbs-dao-topic/xxbs-dao-topic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-dao/xxbs-dao-user/xxbs-dao-user.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-dao/xxbs-dao-user/xxbs-dao-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-datamodel/xxbs-datamodel.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-datamodel/xxbs-datamodel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-db/xxbs-db.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-db/xxbs-db.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-service/xxbs-service.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-service/xxbs-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-service/xxbs-service-api/xxbs-service-api.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-service/xxbs-service-api/xxbs-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-service/xxbs-service-topic/xxbs-service-topic.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-service/xxbs-service-topic/xxbs-service-topic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-service/xxbs-service-user/xxbs-service-user.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-service/xxbs-service-user/xxbs-service-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-web/xxbs-web.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-web/xxbs-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs/xxbs-web/xxbs-web-pc/xxbs-web-pc.iml" filepath="$PROJECT_DIR$/xxbs/xxbs-web/xxbs-web-pc/xxbs-web-pc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zkai.iml" filepath="$PROJECT_DIR$/zkai.iml" />
+      <module fileurl="file://$PROJECT_DIR$/component/zkai-component.iml" filepath="$PROJECT_DIR$/component/zkai-component.iml" />
+    </modules>
+  </component>
+</project>

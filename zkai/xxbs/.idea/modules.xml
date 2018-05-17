@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/xxbs.iml" filepath="$PROJECT_DIR$/xxbs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs-service/xxbs-service.iml" filepath="$PROJECT_DIR$/xxbs-service/xxbs-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs-service/xxbs-service-api/xxbs-service-api.iml" filepath="$PROJECT_DIR$/xxbs-service/xxbs-service-api/xxbs-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxbs-service/xxbs-service-user/xxbs-service-user.iml" filepath="$PROJECT_DIR$/xxbs-service/xxbs-service-user/xxbs-service-user.iml" />
+    </modules>
+  </component>
+</project>

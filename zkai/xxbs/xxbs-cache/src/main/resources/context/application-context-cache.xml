@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+<description>缓存配置</description>
+
+    <context:component-scan base-package="com.zkai.xxbs.service.cache" />
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          lazy-init="false" >
+
+        <property name="order" value="0"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:conf/redis.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Redis缓存配置 -->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis.pool.maxIdle}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${redis.pool.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${redis.pool.minEvictableIdleTimeMillis}"/>
+        <property name="softMinEvictableIdleTimeMillis" value="${redis.pool.softMinEvictableIdleTimeMillis}"/>
+        <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/>
+    </bean>
+
+    <!--     非切片连接池-->
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg index="0" ref="jedisPoolConfig" />
+        <constructor-arg index="1" value="${redis.pool.host}" />
+        <constructor-arg index="2" value="${redis.pool.port}" type="int" />
+        <constructor-arg index="3" value="${redis.pool.timeout}" type="int" />
+        <constructor-arg index="4" value="${redis.pool.password}" />
+    </bean>
+
+
+
+
+
+
+
+
+
+    <!--切片连接池-->
+    <!--    <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
+            <constructor-arg index="0" ref="jedisPoolConfig"/>
+            <constructor-arg index="1">
+                <list>
+                    <bean class="redis.clients.jedis.JedisShardInfo">
+                        <constructor-arg index="0" value="${redis.pool.host}"/>
+                        <constructor-arg index="1" value="${redis.pool.port}"/>
+                        <property name="password" value="${redis.pool.password}"/>
+                    </bean>
+                </list>
+            </constructor-arg>
+        </bean>-->
+
+    <!--
+<bean name="genericObjectPoolConfig" class="org.apache.commons.pool2.impl.GenericObjectPoolConfig" >
+    <property name="maxWaitMillis" value="-1" />
+    <property name="maxTotal" value="1000" />
+    <property name="minIdle" value="8" />
+    <property name="maxIdle" value="100" />
+</bean>
+
+
+<bean id="jedisCluster" class="com.leimingtech.core.cache.jedis.JedisClusterFactory">
+    <property name="addressConfig">
+        <value>classpath:conf/redis-connect.properties</value>
+    </property>
+    <property name="addressKeyPrefix" value="server" />
+    <property name="timeout" value="60000" />
+    <property name="maxRedirections" value="6" />
+    <property name="genericObjectPoolConfig" ref="genericObjectPoolConfig" />
+</bean>
+-->
+</beans>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="xxbs-service-api:war">
+    <output-path>$PROJECT_DIR$/xxbs-service/xxbs-service-api/target</output-path>
+    <root id="archive" name="xxbs-service-api-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="xxbs-service-api:war exploded" />
+    </root>
+  </artifact>
+</component>

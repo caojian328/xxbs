@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zkai</groupId>
+    <artifactId>zkai</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+	
+	<modules>
+		<module>component</module>
+		<module>xxbs</module>
+	</modules>
+
+    <properties>
+        <jetty.version>8.1.10.v20130312</jetty.version>
+        <spring.version>4.2.6.RELEASE</spring.version>
+        <springdata.version>1.7.2.RELEASE</springdata.version>
+        <shiro.version>1.2.3</shiro.version>
+        <guava.version>18.0</guava.version>
+        <poi.version>3.12</poi.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <lucene.version>4.8.0</lucene.version>
+        <assertj.version>1.6.1</assertj.version>
+        <freemarker.version>2.3.20</freemarker.version>
+        <junit.version>4.11</junit.version>
+        <dbunit.version>2.4.7</dbunit.version>
+        <javax.servlet-api.version>3.1-b05</javax.servlet-api.version>
+        <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
+        <jstl.version>1.2</jstl.version>
+        <log4j.version>2.1</log4j.version>
+        <aopalliance.version>1.0</aopalliance.version>
+        <druid.version>1.0.7</druid.version>
+        <jedis.version>2.8.1</jedis.version>
+        <p6spy.version>2.1.1</p6spy.version>
+        <cglib.version>3.0</cglib.version>
+        <cglib-nodep.version>3.0</cglib-nodep.version>
+        <!-- 数据库驱动 -->
+        <mysql-connector-java.version>5.1.25</mysql-connector-java.version>
+        <mybatis.version>3.2.7</mybatis.version>
+        <mybatis-spring.version>1.2.2</mybatis-spring.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
+        <javassist.version>3.20.0-GA</javassist.version>
+        <quartz.version>2.1.7</quartz.version>
+        <pager-taglib.version>2.0</pager-taglib.version>
+        <protobuf-java.version>2.5.0</protobuf-java.version>
+        <hessian.version>4.0.38</hessian.version>
+        <lombok.version>1.14.2</lombok.version>
+        <joda-time.version>2.1</joda-time.version>
+        <aspectjweaver.version>1.8.1</aspectjweaver.version>
+        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <commons-dbcp.version>1.4</commons-dbcp.version>
+        <commons-pool.version>1.6</commons-pool.version>
+        <jackson.version>2.2.4</jackson.version>
+        <jmagick.version>6.6.9</jmagick.version>
+        <ehcache.version>2.4.3</ehcache.version>
+        <javax-mail.version>1.5.2</javax-mail.version>
+        <json-lib.version>2.4</json-lib.version>
+        <httpclient.version>4.3.4</httpclient.version>
+        <org-json.version>20140107</org-json.version>
+        <dom4j.version>1.6.1</dom4j.version>
+        <org.jdom>1.1.3</org.jdom>
+        <javamail.version>1.4.1</javamail.version>
+        <activemq.version>5.12.0</activemq.version>
+        <aliyun-openservices.version>1.2.2</aliyun-openservices.version>
+        <bcs-sdk-java.version>0.0.1</bcs-sdk-java.version>
+        <com.aliyun.oss.version>2.2.3</com.aliyun.oss.version>
+        <baidu.editor.version>1.1.1</baidu.editor.version>
+        <java.home>C:/Program Files/Java/jdk1.7.0_79</java.home>
+        <argLine>-Dfile.encoding=UTF-8</argLine>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    </project>

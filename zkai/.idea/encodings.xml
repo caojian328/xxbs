@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-cache" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-dao/xxbs-dao-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-dao/xxbs-dao-topic" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-dao/xxbs-dao-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-datamodel" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-db" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-service/xxbs-service-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-service/xxbs-service-topic" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-service/xxbs-service-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xxbs/xxbs-web/xxbs-web-pc" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="xxbs-web-pc:war">
+    <output-path>$PROJECT_DIR$/xxbs/xxbs-web/xxbs-web-pc/target</output-path>
+    <root id="archive" name="xxbs-web-pc.war">
+      <element id="artifact" artifact-name="xxbs-web-pc:war exploded" />
+    </root>
+  </artifact>
+</component>
