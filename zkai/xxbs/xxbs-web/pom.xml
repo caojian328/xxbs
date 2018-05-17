@@ -12,6 +12,8 @@
     <artifactId>xxbs-web</artifactId>
     <packaging>pom</packaging>
     
+	
+	
     <modules>
         <module>xxbs-web-pc</module>
     </modules>
